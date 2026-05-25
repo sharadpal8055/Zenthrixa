@@ -6,7 +6,7 @@ import { ShopContext } from "../context/ShopContext";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-const { search, setSearch, showSearch, setShowSearch } = useContext(ShopContext);
+const { search, setSearch, showSearch, setShowSearch,getcartcount } = useContext(ShopContext);
 
   const linkClass = ({ isActive }) =>
     `relative px-3 py-2 text-sm font-medium transition-all duration-200
@@ -37,7 +37,7 @@ const { search, setSearch, showSearch, setShowSearch } = useContext(ShopContext)
                 ZEN<span className="text-indigo-600">THRIXA</span>
               </span>
               <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase mt-0.5">
-                Premium Tech
+                Premium Touch
               </span>
             </div>
           </NavLink>
@@ -71,7 +71,7 @@ const { search, setSearch, showSearch, setShowSearch } = useContext(ShopContext)
               >
                 <ShoppingCart size={22} />
                 <span className="absolute top-0 right-0 flex items-center justify-center h-5 w-5 text-[10px] font-bold text-white bg-indigo-600 rounded-full border-2 border-white translate-x-1/2 -translate-y-1/2">
-                  18
+                  {getcartcount()}
                 </span>
               </NavLink>
 

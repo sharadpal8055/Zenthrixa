@@ -2,15 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets/frontend_assets/assets";
+import RelatedProduct from "../components/RelatedProduct";
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency ,cartitem,addtocart} = useContext(ShopContext);
 
   const [product, setProduct] = useState(null);
   const [proimage, setProimage] = useState("");
   const [size, setSize] = useState("");
-
+//console.log(product)
   const fetchProductData = () => {
     const foundProduct = products.find(
       (item) => item._id === productId
@@ -145,7 +146,7 @@ const Product = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
 
-            <button
+            <button onClick={()=>addtocart({itemid:product._id,size})}
               className="w-full sm:w-auto px-8 py-3 rounded-xl bg-indigo-600 text-white
               font-semibold hover:bg-indigo-700 active:scale-[0.98]
               transition-all duration-200 shadow-lg"
@@ -270,6 +271,9 @@ const Product = () => {
     </div>
   </div>
 </div>
+
+{/* related products */}
+<RelatedProduct category={product.category} subcategory={product.subcategory}/>
     </div>
   
   ) : (

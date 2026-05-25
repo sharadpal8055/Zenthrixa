@@ -13,6 +13,8 @@ import Navbar from './components/Navbar'
 import './App.css'; 
 import Footer from './components/Footer'
 import Searchbar from './components/Searchbar'
+ import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   
@@ -20,6 +22,7 @@ const App = () => {
     <div>
       <Navbar />
       <Searchbar/>
+      <ToastContainer/>
 <Routes>
   
 <Route path='/' element={<Home/>}/>
