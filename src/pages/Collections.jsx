@@ -43,7 +43,7 @@ const{search,showSearch}=useContext(ShopContext);
     }
     setfilterdproduct(productscopy);
   }
-  console.log(filterdproduct)
+ // console.log(filterdproduct)
 
   useEffect(() => {
     applyfilter()

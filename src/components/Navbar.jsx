@@ -3,7 +3,7 @@ import { Menu, X, ShoppingCart, Search, User, ChevronDown } from "lucide-react";
 import { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import { ShopContext } from "../context/ShopContext";
-
+import { Link } from 'react-router-dom';
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 const { search, setSearch, showSearch, setShowSearch,getcartcount } = useContext(ShopContext);
@@ -89,9 +89,10 @@ const { search, setSearch, showSearch, setShowSearch,getcartcount } = useContext
 
                 {/* Dropdown Menu */}
                 <div className="absolute right-0 w-48 py-2 mt-2 bg-white border rounded-xl shadow-xl invisible opacity-0 translate-y-2 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
-                  <p className="px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 cursor-pointer">
+                 <Link to={'/login'} > <p className="px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 cursor-pointer">
                     My Profile
                   </p>
+                  </Link>
                   <p className="px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 cursor-pointer">
                     Orders
                   </p>
@@ -109,7 +110,7 @@ const { search, setSearch, showSearch, setShowSearch,getcartcount } = useContext
             <NavLink to="/cart" className="relative p-2 text-gray-700">
               <ShoppingCart size={22} />
               <span className="absolute top-0 right-0 h-4 w-4 bg-indigo-600 text-white text-[8px] flex items-center justify-center rounded-full translate-x-1/2 -translate-y-1/2">
-                18
+                {getcartcount()}
               </span>
             </NavLink>
             <button
@@ -134,6 +135,10 @@ const { search, setSearch, showSearch, setShowSearch,getcartcount } = useContext
           >
             Home
           </NavLink>
+          <NavLink to="/collections" onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 px-4 text-base font-medium text-gray-700 hover:bg-indigo-50 rounded-lg ">
+              Collection
+            </NavLink>
           <NavLink
             to="/about"
             onClick={() => setIsMobileMenuOpen(false)}
