@@ -176,11 +176,11 @@ The UI follows a mobile-first approach with modern responsive layouts and reusab
 
 # 📸 Screenshots
 
-Add project screenshots here:
-- Homepage
-- Product Page
-- Cart Page
-- Mobile View
+<img width="1919" height="1091" alt="Screenshot 2026-05-28 002140" src="https://github.com/user-attachments/assets/cf87ffac-d2c1-4df1-ac37-5b79dfa3f535" />
+<img width="1919" height="1087" alt="Screenshot 2026-05-28 002148" src="https://github.com/user-attachments/assets/a1f87a94-74b2-4109-b0b6-1fb282c9a23f" />
+
+<img width="1917" height="1080" alt="Screenshot 2026-05-28 002229" src="https://github.com/user-attachments/assets/2c9658a5-554f-4259-a366-308ba6e1ea20" />
+
 
 ---
 
