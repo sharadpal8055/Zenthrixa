@@ -69,6 +69,27 @@ const registerUser = async (req, res) => {
   }
 };
 
-const loginUser = async (req, res) => {};
+const loginUser = async (req, res) => {
+  try {
+    const{email,password}=req.body;
+    const user=await userModel.findOne({email})
+
+    if(!user){
+      return res.json({success:false,message:"User does not exist"})
+    }
+    const ispassmatch=await bcrypt.compare(password,user.password)
+    if(ispassmatch){
+      const token=createtoken(user._id)
+
+      return res.json({success:true,token})
+     
+    }
+    else{
+       return res.json({success:false,message:"Password is not matching"})
+    }
+  } catch (error) {
+    return res.json({success:false,message:error.message})
+  }
+};
 const adminLogin = async (req, res) => {};
 export { loginUser, registerUser, adminLogin };
