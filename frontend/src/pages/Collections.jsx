@@ -47,7 +47,7 @@ const{search,showSearch}=useContext(ShopContext);
 
   useEffect(() => {
     applyfilter()
-  }, [category, subcategory,search,showSearch])
+  }, [category, subcategory,search,showSearch,products])
  
   const applysorting = () => {
      let fpcopy = filterdproduct.slice();

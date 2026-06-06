@@ -11,7 +11,7 @@ const Bestseller = () => {
 const bestproduct=products.filter((item)=>item.bestseller)
 setbestseller(bestproduct.slice(0,5))
   },[products])
-  console.log("bestseller",bestseller)
+  
   return (
     <div className="my-10 px-4 md:px-[10%] text-center">
   {/* Header Section: Title and Curated Subtitle */}

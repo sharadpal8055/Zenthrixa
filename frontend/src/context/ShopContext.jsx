@@ -1,16 +1,43 @@
 import { createContext, useEffect, useState } from "react";
-import { products } from "../assets/assets/frontend_assets/assets";
+import axios from "axios";
+// import { products } from "../assets/assets/frontend_assets/assets";
 import { toast } from "react-toastify";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 export const ShopContext = createContext();
 
 const Shopcontextprovider = (props) => {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(true);
   const [cartitem, setcartitem] = useState({});
+  const [products, setproducts] = useState([]);
+  const backend_url = import.meta.env.VITE_BACKEND_URL;
+const [token, settoken] = useState('')
   const currency = "$";
   const delivery_fee = 10;
   let addtocartproduct = structuredClone(cartitem);
+
+  const fetchproducts = async () => {
+    try {
+      const response = await axios.get(
+        backend_url + "/api/product/listproduct",
+      );
+      console.log(response);
+      if(response.data.success){
+        setproducts(response.data.product)
+      }
+      else{
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  };
+useEffect(() => {
+  fetchproducts()
+}, [])
+
+
+
   const addtocart = ({ itemid, size }) => {
     if (!size) {
       toast.error("Please select size ");
@@ -46,7 +73,7 @@ const Shopcontextprovider = (props) => {
     cartdata[itemid][size] = quantity;
     setcartitem(cartdata);
   };
-  const getcartamount =  () => {
+  const getcartamount = () => {
     let totalcartamount = 0;
     for (const items in cartitem) {
       const iteminfofromproducts = products.find(
@@ -63,7 +90,7 @@ const Shopcontextprovider = (props) => {
     }
     return totalcartamount;
   };
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const value = {
     products,
     currency,
@@ -75,7 +102,9 @@ const Shopcontextprovider = (props) => {
     cartitem,
     addtocart,
     getcartcount,
-    updatequantity,getcartamount,navigate
+    updatequantity,
+    getcartamount,
+    navigate,backend_url,token,settoken
   };
 
   return (

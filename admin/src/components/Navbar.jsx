@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/adminlogo1.png";
 
-const Navbar = () => {
+const Navbar = ({settoken}) => {
   return (
     <nav className="w-full bg-white border-b border-gray-200 shadow-sm">
       <div className="h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -36,7 +36,7 @@ const Navbar = () => {
           </div>
 
           {/* Logout Button */}
-          <button
+          <button onClick={()=>{settoken("")}}
             className="
               px-3 sm:px-4 lg:px-5
               py-2
