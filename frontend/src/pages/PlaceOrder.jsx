@@ -8,6 +8,9 @@ import { ShopContext } from '../context/ShopContext'
 const PlaceOrder = () => {
   const [method, setmethod] = useState('cod');
   const {navigate} =useContext(ShopContext);
+
+
+  
  return (
   <div
     className="

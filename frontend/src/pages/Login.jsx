@@ -1,14 +1,54 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Title from "../components/Title";
-
+import { ShopContext } from "../context/ShopContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 const Login = () => {
+  const { token, settoken, navigate, backend_url } = useContext(ShopContext);
+  const [currentstate, setcurrentstate] = useState("Login");
+  const [name, setname] = useState("");
+  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("");
 
-  const [currentstate, setcurrentstate] = useState("Sign UP");
-
-  const onsubmithandler = (e) => {
+  const onsubmithandler = async (e) => {
     e.preventDefault();
+    try {
+      if (currentstate === "Sign UP") {
+        const response = await axios.post(backend_url + "/api/user/register", {
+          name,
+          email,
+          password,
+        });
+        if (response.data.success) {
+          settoken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+        } else {
+          toast.error(response.data.message);
+        }
+      } else {
+        const response = await axios.post(backend_url + "/api/user/login", {
+          email,
+          password,
+        });
+        if (response.data.success) {
+          settoken(response.data.token);
+          localStorage.setItem("token", response.data.token);
+        } else {
+          toast.error(response.data.message);
+        }
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
+
+
+  useEffect(() => {
+    if(token){
+      navigate('/')
+    }
+  }, [token])
   return (
     <div
       className="
@@ -20,7 +60,6 @@ const Login = () => {
       to-purple-50
       px-4"
     >
-
       {/* ================= FORM CONTAINER ================= */}
       <form
         onSubmit={onsubmithandler}
@@ -32,10 +71,8 @@ const Login = () => {
         border border-gray-100
         p-8 sm:p-10"
       >
-
         {/* ================= HEADER ================= */}
         <div className="text-center mb-8">
-
           <div className="flex justify-center mb-3">
             <Title
               text1={currentstate === "Sign UP" ? "CREATE" : "WELCOME"}
@@ -47,20 +84,18 @@ const Login = () => {
             className="
             text-sm text-gray-500 mt-2"
           >
-            {
-              currentstate === "Sign UP"
-                ? "Join us and explore premium collections."
-                : "Login to continue your shopping journey."
-            }
+            {currentstate === "Sign UP"
+              ? "Join us and explore premium collections."
+              : "Login to continue your shopping journey."}
           </p>
         </div>
 
         {/* ================= INPUTS ================= */}
         <div className="space-y-5">
-
           {/* Name */}
           {currentstate === "Sign UP" && (
             <input
+              onChange={(e) => setname(e.target.value)}
               type="text"
               placeholder="Full Name"
               className="
@@ -79,6 +114,7 @@ const Login = () => {
 
           {/* Email */}
           <input
+            onChange={(e) => setemail(e.target.value)}
             type="email"
             placeholder="Email Address"
             className="
@@ -96,6 +132,7 @@ const Login = () => {
 
           {/* Password */}
           <input
+            onChange={(e) => setpassword(e.target.value)}
             type="password"
             placeholder="Password"
             className="
@@ -118,7 +155,6 @@ const Login = () => {
           flex items-center justify-between
           mt-5 text-sm"
         >
-
           <button
             type="button"
             className="
@@ -129,33 +165,31 @@ const Login = () => {
             Forgot Password?
           </button>
 
-          {
-            currentstate === "Sign UP" ? (
-              <button
-                type="button"
-                onClick={() => setcurrentstate("Login")}
-                className="
+          {currentstate === "Sign UP" ? (
+            <button
+              type="button"
+              onClick={() => setcurrentstate("Login")}
+              className="
                 text-indigo-600
                 font-medium
                 hover:text-indigo-700
                 transition"
-              >
-                Already have an account?
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setcurrentstate("Sign UP")}
-                className="
+            >
+              Already have an account?
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setcurrentstate("Sign UP")}
+              className="
                 text-indigo-600
                 font-medium
                 hover:text-indigo-700
                 transition"
-              >
-                Create Account
-              </button>
-            )
-          }
+            >
+              Create Account
+            </button>
+          )}
         </div>
 
         {/* ================= BUTTON ================= */}
@@ -174,11 +208,7 @@ const Login = () => {
           transition-all duration-200
           shadow-md hover:shadow-xl"
         >
-          {
-            currentstate === "Sign UP"
-              ? "Create Account"
-              : "Login"
-          }
+          {currentstate === "Sign UP" ? "Create Account" : "Login"}
         </button>
 
         {/* ================= FOOTER ================= */}

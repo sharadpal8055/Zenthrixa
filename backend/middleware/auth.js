@@ -1,0 +1,16 @@
+import jwt from "jsonwebtoken"
+const userauth=(req,res,next)=>{
+  const {token}=req.headers;
+  if(!token){
+  return  res.json({success:false,message:"Not authorized Login Again"})
+  }
+  try {
+    const token_decode=jwt.verify(token,process.env.JWT_SECRET)
+    //req.body.userid=token_decode.id
+    req.userid=token_decode.id
+    next()
+  } catch (error) {
+  return  res.json({success:false,message:error.message})
+  }
+}
+export  default userauth

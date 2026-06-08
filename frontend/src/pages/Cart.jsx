@@ -23,7 +23,7 @@ const Cart = () => {
       }
     }
     setcartitemsdata(tempcartdata);
-  }, [cartitem]);
+  }, [cartitem,products]);
   return (
     <div className="border-t pt-10 px-4 sm:px-8 lg:px-[8%] min-h-screen bg-gray-50">
       {/* ================= TITLE ================= */}
