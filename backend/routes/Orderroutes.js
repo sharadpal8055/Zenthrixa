@@ -1,6 +1,7 @@
 import express from "express"
-import { placeordercod } from "../controllers/ordercontroller.js"
+import { placeordercod, userorder } from "../controllers/ordercontroller.js"
 import userauth from "../middleware/auth.js"
 const Orderrouter=express.Router()
-Orderrouter.post('/placeorder', userauth, placeordercod)
+Orderrouter.post('/placeordercod', userauth, placeordercod)
+Orderrouter.post('/userorder', userauth, userorder)
 export default Orderrouter

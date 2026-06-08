@@ -16,10 +16,21 @@ const placeordercod = async(req, res) => {
     };
     const neworder=new ordermodel(orderdata)
     await neworder.save()
-    await userModel.findByIdAndUpdate(userid,{cartitem:{}})
+    await userModel.findByIdAndUpdate(userId,{cartitem:{}})
 res.json({success:true,message:"Order Placed Successfull using cod"})
   } catch (error) {
     res.json({success:false,message:error.message})
   }
 };
-export { placeordercod };
+
+const userorder=async(req,res)=>{
+  try {
+    const userId=req.userid
+   const orders=await ordermodel.find({userId})
+   res.json({success:true,orders})
+  } catch (error) {
+    res.json({success:false,message:error.message})
+  }
+
+}
+export { placeordercod ,userorder};
