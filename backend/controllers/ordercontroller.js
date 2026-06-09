@@ -33,4 +33,12 @@ const userorder=async(req,res)=>{
   }
 
 }
-export { placeordercod ,userorder};
+const allorders=async(req,res)=>{
+try {
+  const orders=await ordermodel.find({})
+  res.json({success:true,orders,message:"all orders fetched successfully"})
+} catch (error) {
+  res.json({success:false,message:error.message})
+}
+}
+export { placeordercod ,userorder,allorders};

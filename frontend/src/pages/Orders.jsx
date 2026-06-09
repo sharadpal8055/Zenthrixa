@@ -32,7 +32,7 @@ const Orders = () => {
           ),
         );
         setallorderitem(allitem.reverse());
-        console.log(allorderitem);
+        
       }
     } catch (error) {
       toast.error(response.data.message)
