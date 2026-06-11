@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: [
       "https://zenthrixa-frontend.vercel.app",
-      "https://zenthrixa-admin-panel.vercel.app/"
+      "https://zenthrixa-admin-panel.vercel.app"
     ],
     credentials: true
   })
