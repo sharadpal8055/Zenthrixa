@@ -38,6 +38,34 @@ const PlaceOrder = () => {
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
+  const initpay = (order) => {
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: "Order Payment",
+      description: "Order Payment",
+      order_id: order.id,
+      receipt: order.receipt,
+      handler: async (response) => {
+        console.log(response);
+        try {
+          const {data}=await axios.post(backend_url+'/api/order/verifyRazorpay',response,{headers:{token}})
+          if(data.success){
+            navigate('/orders')
+            setcartitem({})
+          }
+        } catch (error) {
+          console.log(error)
+          toast.error(error)
+          
+        }
+      },
+    };
+    const rzp=new window.Razorpay(options)
+    rzp.open()
+  };
+
   const onsubmithandler = async (e) => {
     e.preventDefault();
     try {
@@ -61,7 +89,7 @@ const PlaceOrder = () => {
         items: orderitem,
         address: FormData,
         amount: (await getcartamount()) + delivery_fee,
-        delivery_fee
+        delivery_fee,
       };
       switch (method) {
         case "cod":
@@ -84,11 +112,22 @@ const PlaceOrder = () => {
             orderdata,
             { headers: { token } },
           );
-          if(striperesponse.data.success){
-            const {session_url}=striperesponse.data
-            window.location.replace(session_url)
-          }else{
-            toast.error(striperesponse.data.message)
+          if (striperesponse.data.success) {
+            const { session_url } = striperesponse.data;
+            window.location.replace(session_url);
+          } else {
+            toast.error(striperesponse.data.message);
+          }
+
+          break;
+        case "razorpay":
+          const RazorpayResponse = await axios.post(
+            backend_url + "/api/order/placeorderRazorpay",
+            orderdata,
+            { headers: { token } },
+          );
+          if (RazorpayResponse.data.success) {
+            initpay(RazorpayResponse.data.order);
           }
 
           break;

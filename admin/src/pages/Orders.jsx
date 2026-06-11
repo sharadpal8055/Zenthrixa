@@ -38,7 +38,7 @@ const Orders = ({ token }) => {
       );
 
       if (response.data.success) {
-        setallorders(response.data.orders);
+        setallorders(response.data.orders.reverse());
       }
     } catch (error) {
       toast.error(error.message);
