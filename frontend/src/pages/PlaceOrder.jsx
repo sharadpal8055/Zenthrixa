@@ -60,7 +60,8 @@ const PlaceOrder = () => {
       let orderdata = {
         items: orderitem,
         address: FormData,
-        amount:await getcartamount() + delivery_fee,
+        amount: (await getcartamount()) + delivery_fee,
+        delivery_fee
       };
       switch (method) {
         case "cod":
@@ -68,23 +69,35 @@ const PlaceOrder = () => {
             backend_url + "/api/order/placeordercod",
             orderdata,
             { headers: { token } },
-            
           );
-          console.log(response.data)
+          console.log(response.data);
           if (response.data.success) {
             setcartitem({});
-            navigate('/orders')
+            navigate("/orders");
+          } else {
+            toast.error(response.data.message);
           }
-          else{
-            toast.error(response.data.message)
+          break;
+        case "stripe":
+          const striperesponse = await axios.post(
+            backend_url + "/api/order/placeorderStripe",
+            orderdata,
+            { headers: { token } },
+          );
+          if(striperesponse.data.success){
+            const {session_url}=striperesponse.data
+            window.location.replace(session_url)
+          }else{
+            toast.error(striperesponse.data.message)
           }
+
           break;
 
         default:
           break;
       }
     } catch (error) {
-    toast.error(error.message)
+      toast.error(error.message);
     }
   };
   return (
