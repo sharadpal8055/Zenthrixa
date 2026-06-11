@@ -1,104 +1,224 @@
-# 🛍️ Zenthrixa – MERN Stack E-Commerce Platform
+# 🛍️ Zenthrixa – Full Stack MERN E-Commerce Platform
 
-Zenthrixa is a modern and responsive full-stack e-commerce web application built using the MERN stack. The project focuses on delivering a smooth online shopping experience with clean UI, dynamic product management, cart functionality, authentication flow, and scalable architecture.
+Zenthrixa is a modern, scalable, and production-ready e-commerce platform built using the MERN stack. The application provides a complete online shopping experience with secure authentication, product management, shopping cart functionality, order processing, payment gateway integration, and an admin dashboard for store management.
 
-Designed with performance, responsiveness, and user experience in mind, Zenthrixa demonstrates practical full-stack development skills and real-world e-commerce workflows.
-
----
-
-# 🚀 Live Demo
-
-Pending
+The project demonstrates real-world full-stack development practices including RESTful APIs, authentication, cloud media storage, payment processing, responsive UI design, and deployment workflows.
 
 ---
 
-# 📂 GitHub Repository
+## 🚀 Live Demo
 
-https://github.com/sharadpal8055/Zenthrixa
+### Customer Store
 
----
+Frontend: https://zenthrixa-frontend.vercel.app/
 
-# ✨ Features
+### Admin Dashboard
 
-## 🔹 Frontend Features
-- Modern responsive UI
-- Dynamic product listings
-- Product detail pages
-- Related products section
-- Shopping cart functionality
-- Quantity management
-- Authentication pages
-- Responsive navigation bar
-- Mobile-friendly layouts
-- Smooth user interactions
+Admin Panel: https://zenthrixa-admin-panel.vercel.app/
 
-## 🔹 Backend Features
-- REST API architecture
-- Product data handling
-- Scalable backend structure
-- Server-side routing setup
-- JSON-based API responses
+### Backend API
 
-## 🔹 User Experience
-- Responsive design for all devices
-- Clean visual hierarchy
-- Optimized component structure
-- Fast loading experience
-- Reusable UI components
+Backend: https://zenthrixa-backend.vercel.app
 
 ---
 
-# 🛠️ Tech Stack
+## ✨ Key Features
 
-## Frontend
-- React.js
-- Vite
-- Tailwind CSS
-- JavaScript (ES6+)
+### 👤 User Features
 
-## Backend
-- Node.js
-- Express.js
-
-## Database
-- MongoDB (Planned / Integration Ready)
+* User Registration & Login
+* JWT Authentication
+* Product Browsing
+* Product Detail Pages
+* Related Products Recommendation
+* Shopping Cart Management
+* Quantity Updates
+* Order Placement
+* Order History Tracking
+* Stripe Payment Integration
+* Razorpay Payment Integration
+* Cash on Delivery (COD)
+* Responsive Mobile Experience
 
 ---
 
-# 📁 Project Structure
+### 🛒 Product Features
+
+* Dynamic Product Listings
+* Product Categories
+* Product Subcategories
+* Product Images
+* Product Sizes
+* Bestseller Products
+* Product Search Functionality
+* Product Filtering
+* Related Product Suggestions
+
+---
+
+### 💳 Payment Features
+
+* Secure Stripe Checkout
+* Razorpay Integration
+* Cash On Delivery Support
+* Payment Verification
+* Order Status Updates
+
+---
+
+### 🛠️ Admin Features
+
+* Secure Admin Authentication
+* Product Management
+* Add Products
+* Remove Products
+* Product Listing Management
+* Order Management
+* Order Status Updates
+* Customer Order Tracking
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* React Router DOM
+* Tailwind CSS
+* Axios
+* React Toastify
+
+### Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+* Multer
+* BcryptJS
+
+### Database
+
+* MongoDB Atlas
+* Mongoose ODM
+
+### Cloud Services
+
+* Cloudinary
+
+### Payment Gateways
+
+* Stripe
+* Razorpay
+
+### Deployment
+
+* Vercel
+* MongoDB Atlas
+* Cloudinary
+
+---
+
+## 📂 Project Structure
 
 ```bash
-Zenthrixa/
+Zenthrixa
 │
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
+├── frontend
+│   ├── src
+│   ├── components
+│   ├── pages
+│   ├── context
+│   └── assets
 │
-├── backend/
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   ├── package.json
+├── backend
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
 │   └── server.js
+│
+├── admin
+│   ├── src
+│   ├── pages
+│   ├── components
+│   └── assets
 │
 └── README.md
 ```
 
 ---
 
-# ⚙️ Installation & Setup
+## 🔐 Authentication Flow
 
-## 1️⃣ Clone Repository
+* JWT-based Authentication
+* Password Hashing using Bcrypt
+* Protected API Routes
+* Admin Authorization Middleware
+* Secure Token Verification
 
-```bash
-git clone https://github.com/sharadpal8055/Zenthrixa.git
+---
+
+## 🛍️ Order Workflow
+
+```text
+Browse Products
+      ↓
+Add To Cart
+      ↓
+Checkout
+      ↓
+Select Payment Method
+      ↓
+Place Order
+      ↓
+Payment Verification
+      ↓
+Order Confirmation
+      ↓
+Track Order Status
 ```
 
 ---
 
-## 2️⃣ Navigate to Project Folder
+## 📦 API Features
+
+### User APIs
+
+* Register User
+* Login User
+* Fetch User Cart
+* Update Cart
+
+### Product APIs
+
+* Add Product
+* List Products
+* Fetch Single Product
+* Remove Product
+
+### Order APIs
+
+* Place COD Order
+* Place Stripe Order
+* Place Razorpay Order
+* Verify Stripe Payment
+* Verify Razorpay Payment
+* Fetch User Orders
+* Fetch All Orders
+* Update Order Status
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/sharadpal8055/Zenthrixa.git
+```
 
 ```bash
 cd Zenthrixa
@@ -106,90 +226,151 @@ cd Zenthrixa
 
 ---
 
-# ▶️ Frontend Setup
+## Frontend Setup
 
 ```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-Frontend runs on:
-```bash
-http://localhost:5173
-```
-
 ---
 
-# ▶️ Backend Setup
+## Backend Setup
 
 ```bash
 cd backend
+
 npm install
-npm start
+
+npm run server
 ```
 
-Backend runs on:
+---
+
+## Admin Setup
+
 ```bash
-http://localhost:5000
+cd admin
+
+npm install
+
+npm run dev
 ```
 
 ---
 
-# 📱 Responsive Design
+## 🔑 Environment Variables
 
-Zenthrixa is fully responsive and optimized for:
+### Backend (.env)
 
-- Mobile Devices
-- Tablets
-- Laptops
-- Desktop Screens
+```env
+PORT=4000
 
-The UI follows a mobile-first approach with modern responsive layouts and reusable components.
+MONGODB_URI=
 
----
+JWT_SECRET=
 
-# 🎯 Key Highlights
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
 
-- Full-stack MERN architecture
-- Scalable folder structure
-- Clean component-based frontend
-- Reusable UI system
-- Dynamic product rendering
-- Cart and order flow
-- Deployment-ready architecture
+CLOUDINARY_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET_KEY=
 
----
+STRIPE_SECRET_KEY=
 
-# 🚧 Future Enhancements
+RAZORPAY_KEY_ID=
+RAZORPAY_KEY_SECRET=
+```
 
-- User authentication with JWT
-- Admin dashboard
-- Payment gateway integration
-- Wishlist functionality
-- Order history tracking
-- Product search & filters
-- Cloud image uploads
-- MongoDB database integration
+### Frontend (.env)
 
----
+```env
+VITE_BACKEND_URL=
+VITE_RAZORPAY_KEY_ID=
+```
 
-# 📸 Screenshots
+### Admin (.env)
 
-<img width="1919" height="1091" alt="Screenshot 2026-05-28 002140" src="https://github.com/user-attachments/assets/cf87ffac-d2c1-4df1-ac37-5b79dfa3f535" />
-<img width="1919" height="1087" alt="Screenshot 2026-05-28 002148" src="https://github.com/user-attachments/assets/a1f87a94-74b2-4109-b0b6-1fb282c9a23f" />
-
-<img width="1917" height="1080" alt="Screenshot 2026-05-28 002229" src="https://github.com/user-attachments/assets/2c9658a5-554f-4259-a366-308ba6e1ea20" />
-
+```env
+VITE_BACKEND_URL=
+```
 
 ---
 
-# 📄 License
+## 📱 Responsive Design
 
-This project is created for learning, portfolio, and development purposes.
+The application is fully responsive and optimized for:
+
+* Mobile Devices
+* Tablets
+* Laptops
+* Desktop Screens
+
+Built using a mobile-first responsive design approach.
 
 ---
 
-# 👨‍💻 Developer
+## 🚀 Performance Highlights
 
-Developed by Sharad Pal
+* Component-Based Architecture
+* Reusable UI Components
+* Optimized API Calls
+* Cloud-Based Image Storage
+* Secure Authentication
+* Production Deployment Ready
+* Scalable Folder Structure
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+
+<img width="1907" height="1096" alt="image" src="https://github.com/user-attachments/assets/e4bd86c2-a835-43eb-b021-6fdc5b15ba91" />
+
+
+### Product Page
+
+<img width="1895" height="1092" alt="image" src="https://github.com/user-attachments/assets/f3ba5cf3-c0cb-4dbd-bd8f-4bd8643fd74a" />
+
+
+### Cart Page
+
+<img width="1898" height="1091" alt="image" src="https://github.com/user-attachments/assets/21d890f0-c7dc-4715-a015-57741f5e4b8a" />
+
+
+
+---
+
+## 🎯 Future Enhancements
+
+* Wishlist Functionality
+* Product Reviews & Ratings
+* Coupon System
+* Inventory Management
+* Email Notifications
+* Advanced Analytics Dashboard
+* Multi-Vendor Support
+* AI Product Recommendations
+
+---
+
+## 👨‍💻 Developer
+
+**Sharad Pal**
+
+B.Tech Computer Science Engineering
+
+Full Stack Developer | MERN Stack Enthusiast
+
+GitHub: https://github.com/sharadpal8055
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a star on GitHub.
