@@ -14,7 +14,16 @@ connectdb();
 connectcloudinary();
 //middlewares
 app.use(express.json())
-app.use(cors())
+//app.use(cors())
+app.use(
+  cors({
+    origin: [
+      "https://zenthrixa-frontend.vercel.app",
+      "https://zenthrixa-admin-panel.vercel.app/"
+    ],
+    credentials: true
+  })
+);
 app.use('/api/user',Userrouter)
 app.use('/api/product',productroutes)
 app.use('/api/cart',cartRouter)
