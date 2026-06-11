@@ -342,20 +342,94 @@ Built using a mobile-first responsive design approach.
 
 <img width="1898" height="1091" alt="image" src="https://github.com/user-attachments/assets/21d890f0-c7dc-4715-a015-57741f5e4b8a" />
 
+<img width="1902" height="1088" alt="image" src="https://github.com/user-attachments/assets/3d1895cd-e7f1-4400-88aa-835a4eb640e3" />
+<img width="1905" height="1089" alt="image" src="https://github.com/user-attachments/assets/16d53161-9761-44aa-a8ed-7808715c7429" />
 
+<img width="1904" height="1090" alt="image" src="https://github.com/user-attachments/assets/4d4348c3-44f2-4c9f-8e65-974fdbd0719c" />
 
 ---
 
 ## 🎯 Future Enhancements
 
+### 🧠 AI-Powered Shopping Experience
+
+* AI Product Recommendation Engine based on user behavior and purchase history
+* Personalized Home Page Recommendations
+* Smart Search with Natural Language Queries
+* AI-Powered Shopping Assistant Chatbot
+* Visual Product Search using Images
+* AI-Based Customer Support and Query Resolution
+* Predictive Analytics for Product Demand Forecasting
+
+### 🛍️ Marketplace Expansion
+
+Zenthrixa is envisioned to evolve beyond a fashion-focused platform into a complete digital marketplace serving multiple product categories, including:
+
+* Fashion & Apparel
+* Groceries & Daily Essentials
+* Electronics & Gadgets
+* Home & Kitchen Appliances
+* Utensils & Cookware
+* Beauty & Personal Care
+* Books & Stationery
+* Sports & Fitness Equipment
+* Furniture & Home Decor
+* Health & Wellness Products
+
+### ⭐ Customer Experience Enhancements
+
 * Wishlist Functionality
 * Product Reviews & Ratings
-* Coupon System
-* Inventory Management
-* Email Notifications
+* Recently Viewed Products
+* Product Comparison Feature
+* Advanced Search & Filtering
+* Voice-Based Product Search
+* Personalized Shopping Experience
+
+### 💳 Commerce & Payments
+
+* Coupon & Discount Management System
+* Gift Cards & Store Credits
+* Subscription-Based Purchases
+* Multi-Currency Support
+* International Payment Gateways
+* Automated Invoice Generation
+
+### 📦 Inventory & Operations
+
+* Advanced Inventory Management
+* Low Stock Notifications
+* Warehouse Management System
+* Supplier Management
+* Automated Stock Tracking
+* Return & Refund Management
+
+### 📈 Business Intelligence
+
 * Advanced Analytics Dashboard
-* Multi-Vendor Support
-* AI Product Recommendations
+* Sales Performance Reports
+* Customer Behavior Analytics
+* Revenue Forecasting
+* AI-Driven Business Insights
+
+### 🌍 Platform Scalability
+
+* Multi-Vendor Marketplace Support
+* Seller Dashboard
+* Vendor Verification System
+* Mobile Applications (Android & iOS)
+* Progressive Web App (PWA)
+* Global Shipping Integration
+* Multi-Language Support
+
+### 📧 Communication & Engagement
+
+* Email Notifications
+* SMS Notifications
+* Order Tracking Updates
+* Marketing Campaign Management
+* Customer Loyalty & Rewards Program
+
 
 ---
 
