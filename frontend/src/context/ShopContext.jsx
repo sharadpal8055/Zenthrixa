@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-// import { products } from "../assets/assets/frontend_assets/assets";
+
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 export const ShopContext = createContext();
@@ -10,11 +10,30 @@ const Shopcontextprovider = (props) => {
   const [showSearch, setShowSearch] = useState(true);
   const [cartitem, setcartitem] = useState({});
   const [products, setproducts] = useState([]);
+const [serverConnected, setServerConnected] = useState(false);
+const [serverLoading, setServerLoading] = useState(true);
+
   const backend_url = import.meta.env.VITE_BACKEND_URL;
   const [token, settoken] = useState("");
   const currency = "$";
   const delivery_fee = 10;
   let addtocartproduct = structuredClone(cartitem);
+
+const checkBackendConnection = async () => {
+  try {
+    await axios.get("https://zenthrixa-backend.vercel.app/");
+    setServerConnected(true);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setServerLoading(false);
+  }
+};
+
+useEffect(() => {
+  checkBackendConnection();
+  axios.get("https://zenthrixa-backend.vercel.app/");
+}, []);
 
   const fetchproducts = async () => {
     try {
@@ -156,7 +175,9 @@ const Shopcontextprovider = (props) => {
     token,
     settoken,
     setcartitem,
-    products
+    products,
+    serverConnected,
+serverLoading
   };
 
   return (

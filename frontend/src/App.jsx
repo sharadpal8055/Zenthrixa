@@ -16,9 +16,15 @@ import Searchbar from './components/Searchbar'
  import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify'
+import { useContext } from "react";
+import { ShopContext } from "./context/ShopContext";
+import ServerConnecting from "./components/ServerConnecting";
 
 const App = () => {
-  
+  const { serverLoading } = useContext(ShopContext);
+  if (serverLoading) {
+    return <ServerConnecting />;
+  }
   return (
     <div>
       <Navbar />
